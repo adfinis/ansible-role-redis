@@ -1,0 +1,38 @@
+# {{ ansible_managed }}
+
+bind {{ hostvars[inventory_hostname][redis_interface_fact_var]['ipv4']['address'] }} 127.0.0.1
+port {{ redis_port }}
+# even used if not daemonized
+pidfile {{ redis_pidfile }}
+# log verbosity
+loglevel {{ redis_log_level }}
+# empty string to log to stdout
+logfile {{ redis_logfile }}
+
+################################ SNAPSHOTTING  ################################
+{% if redis_save_thresholds | default(False) %}
+{% for save in redis_save_thresholds %}
+save {{ save }}
+{% endfor %}
+{% endif %}
+
+# filename of db dump
+dbfilename {{ redis_db_filename }}
+# db will be written inside this directory
+dir {{ redis_db_dir }}
+
+################################# REPLICATION #################################
+{% if redis_slave_of | default(False) %}
+slaveof {{ redis_slave_of }} {{ redis_slave_of_port | default(redis_port) }}
+{% endif %}
+
+{% if redis_password | default(False) %}
+# authenticate with master before replication synchronization process
+masterauth {{ redis_password }}
+{% endif %}
+
+################################## SECURITY ###################################
+{% if redis_password | default(False) %}
+# client authentication
+requirepass {{ redis_password }}
+{% endif %}

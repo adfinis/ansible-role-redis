@@ -1,0 +1,11 @@
+---
+
+- name: enable epel
+  package:
+    name: epel-release
+    state: present
+
+- name: install redis packages
+  package:
+    name: '{{ redis_packages }}'
+    state: present

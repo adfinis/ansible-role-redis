@@ -1,0 +1,49 @@
+---
+
+redis_packages:
+  - redis
+
+# service name
+redis_service: redis
+
+# service port
+redis_port: 6379
+
+# bind interface for redis connections
+redis_interface: eth0
+redis_interface_fact_var: ansible_{{ redis_interface }}
+
+# pid file
+redis_pidfile: '/var/run/redis_{{ redis_port }}.pid'
+
+# log level, any of debug, verbose, notice, warning
+redis_log_level: 'notice'
+# log file, empty string to log to stdout
+redis_logfile: '/var/log/redis/redis.log'
+
+# brute-force safe password, < 512 chars
+# if set, used for client authentication and replication
+#redis_password: uho9ju8quaireethoojag3oopoorohs4ka0eeK5aiyoo4ahr9gaiP9teegiepi1f
+
+# master ip
+# if set, this instance will be slave,
+# otherwise, it assumes to be master
+#redis_slave_of: 127.0.0.1
+
+# slaveof port
+# if the master redis node runs on a non-standard port, one can change it here
+#redis_slave_of_port: 6379
+
+# enable snapshotting by uncommenting desired entries, for instance
+#  - after 900 sec (15 min) if at least 1 key changed
+#  - after 300 sec (5 min) if at least 10 keys changed
+#  - after 60 sec if at least 10000 keys changed
+#redis_save_thresholds:
+#   - 900 1
+#   - 300 10
+#   - 60 10000
+
+# db will be written inside this directory
+redis_db_dir: '/var/lib/redis'
+# filename of db dump
+redis_db_filename: 'dump.rdb'

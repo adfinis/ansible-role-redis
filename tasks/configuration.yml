@@ -1,0 +1,16 @@
+---
+
+- name: enable redis on boot
+  service:
+    name: '{{ redis_service }}'
+    enabled: yes
+
+- name: copy redis config
+  template:
+    src: etc/redis.conf.j2
+    dest: /etc/redis.conf
+    setype: redis_conf_t
+    owner: '{{ redis_service }}'
+    group: '{{ redis_service }}'
+    mode: 0600
+  notify: redis restart
