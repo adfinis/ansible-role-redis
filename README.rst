@@ -28,6 +28,7 @@ Role Variables
 * redis_port: service port
 * redis_interface: bind interface for redis connections
 * redis_interface_fact_var: ansible fact variable for the redis_interface
+* redis_bind: list of redis bind ip addresses separated by spaces
 * redis_pidfile: absolute path to pid file
 * redis_log_level: log level, any of debug, verbose, notice, warning
 * redis_logfile: absolute path to log file, empty string to log to stdout
