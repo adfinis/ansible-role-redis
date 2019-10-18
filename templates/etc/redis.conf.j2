@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-bind {{ hostvars[inventory_hostname][redis_interface_fact_var]['ipv4']['address'] }} 127.0.0.1
+bind {{ redis_bind }}
 port {{ redis_port }}
 # even used if not daemonized
 pidfile {{ redis_pidfile }}

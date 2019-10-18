@@ -12,6 +12,10 @@ redis_port: 6379
 # bind interface for redis connections
 redis_interface: eth0
 redis_interface_fact_var: ansible_{{ redis_interface }}
+# bind on external ip of the redis bind interface and on localhost;
+# this variable can be used to define a custom (space separated) list
+# of ip addresses, for instance, to amend a virtual ip
+redis_bind: '{{ hostvars[inventory_hostname][redis_interface_fact_var]["ipv4"]["address"] }} 127.0.0.1'
 
 # pid file
 redis_pidfile: '/var/run/redis_{{ redis_port }}.pid'
