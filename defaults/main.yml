@@ -47,3 +47,6 @@ redis_logfile: '/var/log/redis/redis.log'
 redis_db_dir: '/var/lib/redis'
 # filename of db dump
 redis_db_filename: 'dump.rdb'
+
+# location of redis config file
+redis_config_file: '/etc/redis.conf'
