@@ -10,7 +10,7 @@
     src: etc/redis.conf.j2
     dest: /etc/redis.conf
     setype: redis_conf_t
-    owner: '{{ redis_service }}'
-    group: '{{ redis_service }}'
+    owner: redis
+    group: redis
     mode: 0600
   notify: redis restart
