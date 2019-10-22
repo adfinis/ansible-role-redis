@@ -38,6 +38,7 @@ Role Variables
 * redis_save_thresholds: list of snapshotting thresholds
 * redis_db_dir: db will be written inside this directory
 * redis_db_filename: filename of db dump
+* redis_config_file: absolute path to the redis config file
 
 Dependencies
 =============
