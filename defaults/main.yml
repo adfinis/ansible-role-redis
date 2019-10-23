@@ -6,6 +6,11 @@ redis_packages:
 # service name
 redis_service: redis
 
+# user owner for files
+redis_owner: redis
+# group owner for files
+redis_group: redis
+
 # service port
 redis_port: 6379
 
